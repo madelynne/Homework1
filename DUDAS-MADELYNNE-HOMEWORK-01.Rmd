@@ -1,0 +1,96 @@
+---
+title: "DUDAS-MADELYNNE-HOMEWORK-01"
+author: "madelynne"
+date: "February 6, 2019"
+output: html_document
+
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+```{r}
+#Module 7: Challenge 1
+#load library
+library(stringr)
+#First, create a vector of 1 word character strings comprising the first line of the Gettysburg address: “Four score and seven years ago our fathers brought forth on this continent, a new nation, conceived in Liberty, and dedicated to the proposition that all men are created equal.”
+i<-c("Four score and seven years ago our fathers brought forth on this continent, a new nation, conceived in Liberty, and dedicated to the proposition that all men are created equal.")
+#split into characters (each word as character) with space as the break
+isplit<- c(str_split(i, " ", simplify = TRUE))
+#every 3rd element
+i3s<-isplit[seq(from=1, to=30, by=3)]
+#removing puncuation
+i3sFinal <- gsub("[[:punct:]]","", i3s)
+i3sFinal
+
+
+#Module 7: Challenge 2
+m <- matrix(data = 1:80, nrow = 8, ncol = 10, byrow = FALSE)
+#Given the matrix, m, above, extract the 2nd, 3rd, and 6th columns and assign them to the variable x
+x<-m[,c(2,3,6)]
+#Given the matrix, m, above, extract the 6th to 8th row and assign them to the variable x
+x<-m[c(6,7,8),] #or x<-m[6:8,]
+#Given the matrix, m, above, extract the elements from row 2, column 2 to row 6, column 9 and assign them to the variable x
+x<-m[2:6,2:9]
+
+
+
+#Module 7: Challenge 3
+#Construct a 4-dimensional, 400 element array (5 x 5 x 4 x 4) named a consisting of the numbers 400 to 1 (i.e., a descending series)
+a <- array(data = 400:1, dim = c(5,5,4,4))
+#Given this matrix, what would the following return?
+a[1,1,1,2]#returns 300 (one  particular value)
+a[2,3,2,]#returns 364 264 164 64 (a list)
+a[1:5,1:5, 3,3] # a 5X5 matrix
+
+
+
+#Module 7:Challenge 4
+#Primate taxonomy 
+#Create a list representing the (simplified) primate taxonomy outlined below. HINT: you can use lists as elements in a list.
+
+#Tese are vectors for each of the lowest levels
+VLemuroidea <- c("Cheirogaleidae","Lepilemuridae","Indriidae","Lemuridae","Daubentoniidae")
+VLorisoidea <- c("Lorisidae","Galagidae")
+VTarsioidea <- c("Tarsiidae")
+VCatarrhini <- c("Cercopithecidae","Hylobatidae","Hominidae")
+VPlatyrrhini <- c("Cebidae","Atelidae","Pitheciidae")
+#Group of anthropoids in a list
+LAnthropoidea <- list(VPlatyrrhini,VCatarrhini)
+#Make the elements of the list
+names(LAnthropoidea) <- c("Platyrrhini","Catarrhini")
+#For all Haplorrhines
+LHaplorhines <- list(LAnthropoidea,VTarsioidea)
+#name the elements
+names(LHaplorhines)<- c("Anthropoidea","Tarsiodea")
+#Group Streps in list
+LStrepsirhini <- list(VLemuroidea,VLorisoidea)
+#Name elements
+names(LStrepsirhini) <- c("Lemuroidea","Lorisoidea")
+#Group Suborders
+LPrimates <- list(LHaplorhines, LStrepsirhini)
+#Name elements
+names(LPrimates) <- c("Haplorhini","strepsirhini")
+#create list of the primate list inorder to put them all under primate
+LLPrimates <- list(LPrimates)
+names(LLPrimates) <- c("Primates")
+LLPrimates 
+
+#Module 7: challenge 5
+#Store the following numbers as a 5 x 3 matrix: 3, 0, 1 ,23, 1, 2, 33, 1, 1, 42, 0, 1, 41, 0, 2. Be sure to fill the matrix ROWWISE
+challMat <- matrix(data=c(3, 0, 1 ,23, 1, 2, 33, 1, 1, 42, 0, 1, 41, 0, 2),nrow=5, ncol=3, byrow = TRUE)
+challMat
+#Coerce the matrix to a data frame
+challdf <- as.data.frame(challMat)
+challdf
+#As a data frame, coerce the second column to be logical-valued (Boolean)
+challdf[,2]<-as.logical(challdf[,2])
+str(challdf[,2])
+#As a data frame, coerce the third column to be factor-valued
+challdf[,3]<-as.factor(challdf[,3])
+str(challdf[,3])
+#When you are done, use the str() command to show the data type for each variable in your dataframe
+str(challdf)
+
+
+```
