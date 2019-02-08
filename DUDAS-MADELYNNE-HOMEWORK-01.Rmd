@@ -1,14 +1,9 @@
 ---
-title:"DUDAS-MADELYNNE-HOMEWORK-01"
-author:"madelynne"
-date:"February 6, 2019"
-output:html_document
+title: "DUDAS-MADELYNNE-HOMEWORK-01"
+author: "madelynne"
+date: "February 7, 2019"
+output: html_document
 ---
-
-##DUDAS-MADELYNNE-HOMEWORK-01##
-***madelynne***
-
-***February 6, 2019***
 
 
 ```{r setup, include=FALSE}
